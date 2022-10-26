@@ -1,0 +1,12 @@
+.select {
+  border: none;
+  background-color: var(--secondary-color);
+  color: var(--tertiary-color);
+  padding: 3px 6px;
+  border-radius: 3px;
+  margin-top: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  width: 100%;
+}
