@@ -1,5 +1,5 @@
 import Card from "../card/Card";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useContext } from "react";
 import myContext from "../../Context";
 import classes from "./home.module.css";
@@ -10,8 +10,6 @@ const Books = () => {
   const ctx = useContext(myContext);
   const inputRef = useRef();
 
-  const [showStars, setShowStars] = useState(false);
-
   useEffect(() => {});
   const submitHandler = (e) => {
     e.preventDefault();
@@ -21,7 +19,7 @@ const Books = () => {
   };
 
   const bookContent = ctx.fetchedBookData.map((book) => {
-    return <Card key={book.id} book={book} showStars={showStars} />;
+    return <Card key={book.id} book={book} />;
   });
 
   return (

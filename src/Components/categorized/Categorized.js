@@ -1,11 +1,9 @@
 import classes from "./categorized.module.css";
 import StarRating from "../starRating/starRating";
 import Options from "../options/Options";
-import { useContext, useRef, useState } from "react";
-import myContext from "../../Context";
+import { useRef, useState } from "react";
 
 const Categorized = (props) => {
-  const ctx = useContext(myContext);
   const commentRef = useRef();
   const [comments, setComments] = useState("");
 

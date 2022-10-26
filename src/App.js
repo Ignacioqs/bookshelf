@@ -9,6 +9,7 @@ import Signup from "./Components/signup/Signup";
 import Login from "./Components/login/Login";
 import MyBooks from "./Components/myBooks/MyBooks";
 import Footer from "./Components/footer/Footer";
+import Hero from "./assets/hero.jpg";
 
 import "./style.css";
 
@@ -24,7 +25,11 @@ const App = () => {
           </div>
         )}
 
-        {!ctx.isLoggedIn && <div className="hero"></div>}
+        {!ctx.isLoggedIn && (
+          <div className="hero">
+            <img src={Hero} alt="hero" />
+          </div>
+        )}
 
         <div className="container">
           <Routes>
