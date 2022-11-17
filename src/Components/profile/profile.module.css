@@ -6,15 +6,24 @@
   text-transform: uppercase;
   padding: 20px;
   margin-right: 30px;
+  width: 100%;
+}
+
+.profile span {
+  text-transform: lowercase;
+  font-weight: 300;
+  margin-left: 5px;
 }
 
 .data {
   line-height: 15px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   display: flex;
   justify-content: space-between;
   min-width: 180px;
   align-items: center;
+  color: var(--tertiary-color);
+  cursor: pointer;
 }
 
 .hide {
@@ -25,29 +34,15 @@
   margin-bottom: 0;
 }
 
-.user {
-  font-weight: 300;
-  color: #fff;
-  text-transform: lowercase;
-  margin-left: 10px;
-}
-
-.data {
-  margin-top: 20px;
-}
-
-.accent {
-  color: var(--tertiary-color);
+.link {
   cursor: pointer;
 }
 
 .active {
-  color: var(--tertiary-color);
   border-bottom: 2px solid var(--tertiary-color);
-  cursor: pointer;
 }
 
-.number {
+.data div {
   width: 30px;
   height: 30px;
   border: 1px solid #fff;
@@ -57,10 +52,8 @@
   border-radius: 50%;
 }
 
-@media (max-width: 900px) {
-  .profile {
-    margin-right: 0px;
-    width: 100%;
-    max-width: 100%;
+@media (max-width: 800px) {
+  .data {
+    margin: 10px 0;
   }
 }

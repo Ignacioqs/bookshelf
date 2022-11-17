@@ -1,0 +1,89 @@
+.container {
+  font-size: 12px;
+  width: 100%;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  padding: 20px 20px 40px;
+  max-width: 600px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.title span {
+  border-bottom: 1px solid;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.container form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.loginInput {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.loginInput label {
+  margin-bottom: 5px;
+}
+
+button {
+  width: auto;
+  align-self: end;
+  justify-self: start;
+}
+
+.error-text {
+  color: #b40e0e;
+  position: absolute;
+  top: 58px;
+  font-size: 11px;
+}
+
+.invalid input {
+  border: 1px solid #b40e0e;
+}
+
+.invalid input:focus {
+  border-color: #b40e0e;
+}
+
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background-color: #ccc;
+  color: #757474;
+  border-color: ccc;
+  cursor: not-allowed;
+}
+
+.login:hover {
+  font-weight: 700;
+  border-bottom: 2px solid;
+}
+
+@media (max-width: 800px) {
+  .container form {
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+  .container {
+    padding: 10px;
+  }
+  .title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

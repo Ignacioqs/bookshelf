@@ -1,23 +1,25 @@
 import { useContext } from "react";
 import classes from "./options.module.css";
-import myContext from "../../Context";
+import myContext from "../../Contexts/Context";
 
 const Options = (props) => {
   const ctx = useContext(myContext);
 
   const handleChange = (e) => {
-    ctx.dispatchStatus({
-      type: "categorizeBook",
+    const obj = props.book;
+    obj.selected = e.target.value;
+
+    ctx.dispatchBookStatus({
       status: e.target.value,
-      item: props.book,
+      item: obj,
     });
   };
 
   const options = [
     { value: "select", label: "select", id: 1 },
     { value: "read", label: "read", id: 2 },
-    { value: "wantToRead", label: "want to read", id: 3 },
-    { value: "currentlyReading", label: "currently reading", id: 4 },
+    { value: "wantToRead", label: "want to ", id: 3 },
+    { value: "currentlyReading", label: "currently ", id: 4 },
     { value: "favorites", label: "favorites", id: 5 },
     { value: "remove", label: "remove", id: 6 },
   ];

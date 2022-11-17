@@ -1,14 +1,14 @@
 import classes from "./footer.module.css";
-import instagram from "../../assets/instagram.svg";
-import facebook from "../../assets/facebook.svg";
-import twitter from "../../assets/twitter.svg";
+import instagram from "../../assets/images/instagram.svg";
+import facebook from "../../assets/images/facebook.svg";
+import twitter from "../../assets/images/twitter.svg";
 
 const Footer = () => {
   return (
     <footer>
       <div className={classes.footerContainer}>
         <div className={classes.logo}>
-          <span className={classes.bold}>book</span>shelf
+          <span>book</span>shelf
         </div>
 
         <div className={classes.lists}>
@@ -32,9 +32,11 @@ const Footer = () => {
         </div>
         <div className={classes.social}>
           <p>Connect</p>
-          <img src={instagram} alt="instagram" />
-          <img src={twitter} alt="twitter" />
-          <img src={facebook} alt="facebook" />
+          <div>
+            <img src={instagram} alt="instagram" />
+            <img src={twitter} alt="twitter" />
+            <img src={facebook} alt="facebook" />
+          </div>
         </div>
       </div>
     </footer>

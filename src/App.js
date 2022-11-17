@@ -1,23 +1,23 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Fragment, useContext } from "react";
-import myContext from "./Context";
-import PrivateRoutes from "./PrivateRoutes";
+import LoginContext from "./Contexts/LoginContext";
+import PrivateRoutes from "./router/PrivateRoutes";
 
 import Header from "./Components/header/Header";
-import Home from "./Components/home/Home";
-import Signup from "./Components/signup/Signup";
-import Login from "./Components/login/Login";
-import MyBooks from "./Components/myBooks/MyBooks";
+import Home from "./Views/home/Home";
+import Signup from "./Views/signup/Signup";
+import Login from "./Views/login/Login";
+import MyBooks from "./Views/myBooks/MyBooks";
 import Footer from "./Components/footer/Footer";
-import Hero from "./assets/hero.jpg";
+import Hero from "./assets/images/hero.jpg";
 
-import "./style.css";
+import "./assets/styles/style.css";
 
 const App = () => {
-  const ctx = useContext(myContext);
+  const ctx = useContext(LoginContext);
   return (
-    <Fragment>
-      <div className="wrapper">
+    <div className="wrapper">
+      <div className="container">
         <Header />
         {!ctx.isLoggedIn && (
           <div className="slogan">
@@ -31,20 +31,20 @@ const App = () => {
           </div>
         )}
 
-        <div className="container">
-          <Routes>
-            <Route element={<PrivateRoutes />}>
-              <Route path="/home" element={<Home />} />
-              <Route path="/mybooks" element={<MyBooks />} />
-            </Route>
-            <Route path="/" element={<Navigate replace to="/signup" />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route element={<PrivateRoutes />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/mybooks" element={<MyBooks />} />
+          </Route>
+          <Route path="/" element={<Navigate replace to="/signup" />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+      <div className="foot">
         <Footer />
       </div>
-    </Fragment>
+    </div>
   );
 };
 export default App;

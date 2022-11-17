@@ -6,3 +6,7 @@ input[type="radio"] {
   cursor: pointer;
   transition: color 0.4s;
 }
+
+label {
+  margin-right: 1px;
+}

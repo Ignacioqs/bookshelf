@@ -1,12 +1,12 @@
-import classes from "./login.module.css";
-import useInput from "../../use-input";
+import classes from "../signup/signup.module.css";
+import useInput from "../../utils/use-input";
 import React, { useContext, useState } from "react";
-import myContext from "../../Context";
+import LoginContext from "../../Contexts/LoginContext";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../firebase-config";
+import { login } from "../../utils/firebase-config";
 
 const Login = () => {
-  const ctx = useContext(myContext);
+  const ctx = useContext(LoginContext);
   const history = useNavigate();
   const [error, setError] = useState("");
 
@@ -65,52 +65,51 @@ const Login = () => {
   };
 
   return (
-    <form className={classes.loginForm} onSubmit={submitHandler}>
-      <div className={classes.alreadyMember}>
+    <div className={classes.container}>
+      <div className={classes.title}>
         <h1> Log In </h1>
         <p>
           Dont Have an Account?
-          <span className={classes.login} onClick={goToSignup}>
-            SignUp
-          </span>
+          <span onClick={goToSignup}>SignUp</span>
         </p>
       </div>
 
-      <div className={emailInputClasses}>
-        <label htmlFor="email">email</label>
-        <input
-          id="email"
-          type="text"
-          onChange={emailChangeHandler}
-          onBlur={emailBlurHandler}
-          value={enteredEmail}
-        />
-        {emailInputHasError && (
-          <p className={classes["error-text"]}>Email must include '@'</p>
-        )}
-      </div>
+      <form onSubmit={submitHandler}>
+        <div className={emailInputClasses}>
+          <label htmlFor="email">email</label>
+          <input
+            id="email"
+            type="text"
+            onChange={emailChangeHandler}
+            onBlur={emailBlurHandler}
+            value={enteredEmail}
+          />
+          {emailInputHasError && (
+            <p className={classes["error-text"]}>Email must include '@'</p>
+          )}
+        </div>
 
-      <div className={passwordInputClasses}>
-        <label htmlFor="password">password</label>
-        <input
-          type="text"
-          id="password"
-          onChange={passwordChangeHandler}
-          onBlur={passwordBlurHandler}
-          value={enteredPassword}
-        />
-        {passwordInputHasError && (
-          <p className={classes["error-text"]}>
-            Password must be at least 7 characters long.
-          </p>
-        )}
-      </div>
+        <div className={passwordInputClasses}>
+          <label htmlFor="password">password</label>
+          <input
+            type="text"
+            id="password"
+            onChange={passwordChangeHandler}
+            onBlur={passwordBlurHandler}
+            value={enteredPassword}
+          />
+          {passwordInputHasError && (
+            <p className={classes["error-text"]}>
+              Password must be at least 7 characters long.
+            </p>
+          )}
+        </div>
 
-      <div className={classes.loginInput}>
         <button disabled={!formIsValid}>log in</button>
-      </div>
-      <div>{error}</div>
-    </form>
+
+        <div>{error}</div>
+      </form>
+    </div>
   );
 };
 
