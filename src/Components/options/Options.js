@@ -10,6 +10,7 @@ const Options = (props) => {
     obj.selected = e.target.value;
 
     ctx.dispatchBookStatus({
+      type: "UPDATESTATUS",
       status: e.target.value,
       item: obj,
     });

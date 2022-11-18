@@ -8,7 +8,6 @@ import { ModalContextProvider } from "./Contexts/ModalContext";
 import { MenuContextProvider } from "./Contexts/MenuContext";
 
 ReactDOM.render(
-  // <React.StrictMode>
   <ContextProvider>
     <LoginContextProvider>
       <ModalContextProvider>
@@ -20,6 +19,6 @@ ReactDOM.render(
       </ModalContextProvider>
     </LoginContextProvider>
   </ContextProvider>,
-  // </React.StrictMode>,
+
   document.getElementById("root")
 );

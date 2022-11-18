@@ -1,14 +1,15 @@
 import classes from "./categorized.module.css";
 import StarRating from "../starRating/starRating";
 import Options from "../options/Options";
-import { useRef, useState, useContext } from "react";
+import { useRef, useState, useContext, useEffect } from "react";
 import ModalContext from "../../Contexts/ModalContext";
+import myContext from "../../Contexts/Context";
 
 const Categorized = (props) => {
   const commentRef = useRef();
   const [comment, setComment] = useState("");
-  const [comments, setComments] = useState([]);
   const ctx = useContext(ModalContext);
+  const mainCtx = useContext(myContext);
 
   const cardImage = props.book.thumbnail ? (
     <img src={props.book.thumbnail} alt="" />
@@ -19,14 +20,20 @@ const Categorized = (props) => {
     </p>
   );
 
-  const commentHandler = () => {
-    setComment(commentRef.current.value);
+  const update = () => {
     if (comment !== "") {
-      setComments((comments) => [...comments, comment]);
+      mainCtx.dispatchBookStatus({
+        type: "COMMENTS",
+        newComment: comment,
+        item: props.book,
+      });
     }
-
-    console.log(comment);
+    commentRef.current.value = "";
   };
+
+  useEffect(() => {
+    update();
+  }, [comment]);
 
   const handleModal = (e) => {
     if (
@@ -49,6 +56,14 @@ const Categorized = (props) => {
     }
     ctx.setShowModal(true);
     ctx.setCurrentCardData(props.book);
+  };
+
+  const commentsHandler = () => {
+    mainCtx.setModalData(props.book);
+
+    if (props.book?.comments?.length > 0) {
+      ctx.setShowCommentModal(true);
+    }
   };
 
   return (
@@ -78,21 +93,25 @@ const Categorized = (props) => {
           </p>
         </div>
 
-        <div className={classes.comment}>
+        <div className={classes.comment} name="comment">
           <label for="comment">write a comment:</label>
           <textarea id="comment" name="comment" ref={commentRef} />
           <div>
             <button
               className={classes.saveBtn}
-              onClick={commentHandler}
+              onClick={() => setComment(commentRef.current.value)}
               name="submit"
             >
               submit
             </button>
-            <p>
-              comments
-              <span className={classes.commentNumber}>({comments.length})</span>
-            </p>
+            <div>
+              <p onClick={commentsHandler} name="comment">
+                comments
+              </p>
+              <span className={classes.commentNumber} name="comment">
+                ({props.book.comments?.length})
+              </span>
+            </div>
           </div>
         </div>
       </div>

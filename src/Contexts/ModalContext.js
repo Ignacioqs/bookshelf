@@ -6,6 +6,7 @@ export default ModalContext;
 export const ModalContextProvider = (props) => {
   const [currentCardData, setCurrentCardData] = useState();
   const [showModal, setShowModal] = useState(false);
+  const [showCommentModal, setShowCommentModal] = useState(false);
   const [isReadMore, setIsReadMore] = useState(false);
 
   return (
@@ -17,6 +18,8 @@ export const ModalContextProvider = (props) => {
         setShowModal,
         isReadMore,
         setIsReadMore,
+        showCommentModal,
+        setShowCommentModal,
       }}
     >
       {props.children}

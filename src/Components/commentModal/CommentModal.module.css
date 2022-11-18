@@ -1,0 +1,77 @@
+.background {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+
+.container {
+  margin: 0 auto;
+  width: 40%;
+  background-color: #fff;
+  overflow: auto;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+}
+
+.x {
+  position: absolute;
+  cursor: pointer;
+  right: 15px;
+  top: 30px;
+  transition: all 0.5s;
+}
+.x:hover {
+  transform: scale(1.1);
+}
+
+.x:hover .line {
+  background-color: var(--main-color);
+}
+
+.line {
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--tertiary-color);
+}
+
+.x .line:nth-child(1) {
+  transform: rotate(45deg);
+  transform-origin: 6px 0px;
+}
+
+.x .line:nth-child(2) {
+  transform: rotate(-45deg);
+  transform-origin: 13px 5px;
+}
+
+.commentContainer {
+  width: 100%;
+}
+
+.commentContainer p {
+  border-bottom: 1px solid var(--main-color);
+  padding: 20px 0;
+  width: 100%;
+  font-size: 14px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
+}

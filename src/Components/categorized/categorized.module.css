@@ -72,10 +72,18 @@ textarea {
   margin-top: auto;
 }
 
+.comment p {
+  border-bottom: 1px solid var(--tertiary-color);
+  align-self: start;
+}
+
+.comment p:hover {
+  border-bottom: 2px solid var(--tertiary-color);
+}
+
 .comment div {
   display: flex;
   justify-content: space-between;
-  align-self: end;
 }
 
 .commentNumber {
@@ -83,6 +91,7 @@ textarea {
   margin-left: 3px;
   color: var(--main-color);
   font-size: 11px;
+  margin-top: 2px;
 }
 
 .dataMid {

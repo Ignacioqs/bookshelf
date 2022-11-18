@@ -7,6 +7,7 @@ export const ContextProvider = (props) => {
   const [fetchedBookData, setFetchedBookData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
+  const [modalData, setModalData] = useState();
 
   const fetchBook = async (val) => {
     setIsLoading(true);
@@ -33,6 +34,7 @@ export const ContextProvider = (props) => {
           genre: key.volumeInfo.categories,
           publisher: key.volumeInfo.publisher,
           selected: null,
+          comments: [],
         });
       }
       setFetchedBookData(fetchedBooks);
@@ -58,16 +60,27 @@ export const ContextProvider = (props) => {
     let books = Object.assign(state, {});
     const id = action.item.id;
     const categories = Object.keys(books);
+    if (action.type === "UPDATESTATUS") {
+      categories.forEach((category) => {
+        if (findBook(books?.[category], id)) {
+          books[category] = books?.[category]?.filter((item) => item.id !== id);
+        }
+      });
 
-    categories.forEach((category) => {
-      if (findBook(books?.[category], id)) {
-        books[category] = books?.[category]?.filter((item) => item.id !== id);
-      }
-    });
+      books?.[action?.status]?.push(action?.item);
+      return { ...books };
+    }
 
-    books?.[action?.status]?.push(action?.item);
+    if (action.type === "COMMENTS") {
+      let book;
 
-    return { ...books };
+      categories.forEach((category) => {
+        book = findBook(books?.[category], id);
+        book?.comments?.push(action.newComment);
+      });
+
+      return { ...books };
+    }
   };
 
   const [statusState, dispatchBookStatus] = useReducer(
@@ -84,6 +97,8 @@ export const ContextProvider = (props) => {
         dispatchBookStatus,
         isLoading,
         error,
+        modalData,
+        setModalData,
       }}
     >
       {props.children}

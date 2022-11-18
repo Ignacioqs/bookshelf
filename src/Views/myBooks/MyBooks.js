@@ -3,6 +3,7 @@ import myContext from "../../Contexts/Context";
 import classes from "./myBooks.module.css";
 import Profile from "../../Components/profile/Profile";
 import Modal from "../../Components/modal/Modal";
+import CommentModal from "../../Components/commentModal/CommentModal";
 import Categorized from "../../Components/categorized/Categorized";
 import MenuContext from "../../Contexts/MenuContext";
 import ModalContext from "../../Contexts/ModalContext";
@@ -15,8 +16,8 @@ const MyBooks = (props) => {
   const [showStars, setShowStars] = useState(true);
 
   let readContent =
-    ctx.statusState.read.length > 0 ? (
-      ctx.statusState.read.map((book) => (
+    ctx.statusState.read?.length > 0 ? (
+      ctx.statusState.read?.map((book) => (
         <Categorized key={book.id} book={book} showStars={showStars} />
       ))
     ) : (
@@ -27,8 +28,8 @@ const MyBooks = (props) => {
     );
 
   let wantToReadContent =
-    ctx.statusState.wantToRead.length > 0 ? (
-      ctx.statusState.wantToRead.map((book) => (
+    ctx.statusState.wantToRead?.length > 0 ? (
+      ctx.statusState.wantToRead?.map((book) => (
         <Categorized key={book.id} book={book} />
       ))
     ) : (
@@ -39,8 +40,8 @@ const MyBooks = (props) => {
     );
 
   let currentlyContent =
-    ctx.statusState.currentlyReading.length > 0 ? (
-      ctx.statusState.currentlyReading.map((book) => (
+    ctx.statusState.currentlyReading?.length > 0 ? (
+      ctx.statusState.currentlyReading?.map((book) => (
         <Categorized key={book.id} book={book} />
       ))
     ) : (
@@ -51,8 +52,8 @@ const MyBooks = (props) => {
     );
 
   let favoritesContent =
-    ctx.statusState.favorites.length > 0 ? (
-      ctx.statusState.favorites.map((book) => (
+    ctx.statusState.favorites?.length > 0 ? (
+      ctx.statusState.favorites?.map((book) => (
         <Categorized key={book.id} book={book} showStars={showStars} />
       ))
     ) : (
@@ -65,6 +66,7 @@ const MyBooks = (props) => {
   return (
     <div className={classes.books}>
       {ModalCtx.showModal && <Modal />}
+      {ModalCtx.showCommentModal && <CommentModal />}
       {/* prettier-ignore */}
       <div className={classes.profile}><Profile /></div>
       {/* prettier-ignore */}
