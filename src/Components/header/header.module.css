@@ -101,6 +101,7 @@ header {
     color: #fff;
     padding-top: 100px;
     flex-direction: column;
+    z-index: 10;
   }
 
   .navMobile li {

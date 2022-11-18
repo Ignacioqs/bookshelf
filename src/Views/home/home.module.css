@@ -65,13 +65,13 @@
 .slogan h1 {
   position: absolute;
   font-weight: 300;
-  line-height: 52px;
-  font-size: 45px;
+  line-height: 32px;
+  font-size: 28px;
   letter-spacing: 1px;
   color: #fff;
   left: 50%;
-  top: 70px;
-  transform: translate(-50%, 0);
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .slogan img {
@@ -107,13 +107,6 @@
   .slogan {
     margin-top: 20px;
     height: 120px;
-  }
-
-  .slogan h1 {
-    font-size: 45px;
     text-align: center;
-    left: 20%;
-    top: 10%;
-    transform: translate(-10%, 0);
   }
 }
